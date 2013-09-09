@@ -49,6 +49,7 @@ void Game::init()
 void Game::init_gl()
 {
 	SDL_GL_SetSwapInterval(1);
+	glewInit();
 
 	glShadeModel(GL_SMOOTH);
 
@@ -87,6 +88,35 @@ void Game::render()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+
+	float fTriangle[9] = {
+		-0.4f, 0.1f, 0.0f,
+		0.4f, 0.1f, 0.0f,
+		0.0f, 0.7f, 0.0
+	};
+
+	float fQuad[12] = {
+		-0.2f, -0.1f, 0.0f,
+		-0.2f, -0.6f, 0.0f,
+		0.2f, -0.1f, 0.0f,
+		0.2f, -0.6, 0.0f
+	};
+
+	UINT uiVBO[2];
+
+	glGenBuffers(2, uiVBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, uiVBO[0]);
+	glBufferData(GL_ARRAY_BUFFER, 9*sizeof(float), fTriangle, GL_STATIC_DRAW);
+
+	// We just clear color
+	glClear(GL_COLOR_BUFFER_BIT); 
+
+	glEnableVertexAttribArray(0); 
+	// Triangle render
+	glBindBuffer(GL_ARRAY_BUFFER, uiVBO[0]); 
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); 
+	glDrawArrays(GL_TRIANGLES, 0, 3); 
 
 	SDL_GL_SwapWindow(pWindow);
 }

@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)../ThirdParty/glut-3.7.6;$(ProjectDir)../ThirdParty/FreeImage3154/FreeImage/Source;$(ProjectDir)../ThirdParty/SDL-2.0.0-7628/include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)../ThirdParty/glut-3.7.6;$(ProjectDir)..\ThirdParty\FreeImage3154\FreeImage\Debug\;$(ProjectDir)..\ThirdParty\SDL-2.0.0-7628\VisualC\SDLmain\Win32\Debug;$(ProjectDir)..\ThirdParty\SDL-2.0.0-7628\VisualC\SDL\Win32\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)../ThirdParty/glut-3.7.6;$(ProjectDir)../ThirdParty/FreeImage3154/FreeImage/Source;$(ProjectDir)../ThirdParty/SDL-2.0.0-7628/include;$(ProjectDir)../ThirdParty/glew-1.10.0/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)../ThirdParty/glut-3.7.6;$(ProjectDir)..\ThirdParty\FreeImage3154\FreeImage\Debug\;$(ProjectDir)..\ThirdParty\SDL-2.0.0-7628\VisualC\SDLmain\Win32\Debug;$(ProjectDir)..\ThirdParty\SDL-2.0.0-7628\VisualC\SDL\Win32\Debug;$(ProjectDir)../ThirdParty/glew-1.10.0/lib/Release/win32;$(ProjectDir)../ThirdParty/glew-1.10.0/lib\Release MX\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -59,7 +59,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;opengl32.lib;glut32.lib;freeImaged.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;opengl32.lib;glut32.lib;freeImaged.lib;glew32.lib;glew32mx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,6 +95,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PixelShader.frag" />
+    <None Include="VertexShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
